@@ -7,13 +7,13 @@ from miraLibs.pyLibs import copy
 
 
 def main(file_name, local):
-    logger = logging.getLogger("Anim start")
+    logger = logging.getLogger("Cfx start")
     new_file.new_file()
     context = pipeFile.PathDetails.parse_path(file_name)
     project = context.project
     sequence = context.sequence
     shot = context.shot
-    task = "Anim" if context.task == "Sim" else context.task
+    task = "Anim" if context.task == "Cfx" else context.task
     anim_publish_file = pipeFile.get_task_publish_file(project, "Shot", sequence, shot, "Anim", task)
     if not os.path.isfile(anim_publish_file):
         logger.warning("%s is not an exist file" % anim_publish_file)
