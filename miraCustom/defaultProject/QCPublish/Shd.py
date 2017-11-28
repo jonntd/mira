@@ -48,6 +48,8 @@ def main():
 
 def convert_image(context):
     tex_dir = context.tex_dir
+    if not os.path.isdir(tex_dir):
+        return
     ext_list = [".tif", ".tiff", ".png", ".tga", ".jpg", ".jpeg", ".exr", ".psd", ".bmp"]
     for i in os.listdir(tex_dir):
         tex_name = "%s/%s" % (tex_dir, i)
