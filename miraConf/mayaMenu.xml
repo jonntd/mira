@@ -16,6 +16,8 @@
     <submenu name="Shading" type="submenu">
         <command cmd="import miraPipeline.maya.templates_manage as tm;reload(tm);al=tm.AssetLight();al.import_char_light()"
                  mode="python" name="导入角色灯光【import character light】" type="command"/>
+        <command cmd="from miraScripts.mayaTools.model_tool import set_subdivision;reload(set_subdivision);set_subdivision.main()"
+                 mode="python" name="设置细分【Set Subdivision】" type="command"/>
     </submenu>
     <!--rig tools-->
     <submenu name="Rigging" type="submenu">
