@@ -11,6 +11,7 @@ from miraLibs.pipeLibs import pipeFile, Project
 from miraLibs.pipeLibs.pipeMaya.rebuild_assembly import rebuild_scene
 from miraLibs.pyLibs import json_operation, conf_parser
 from miraLibs.pipeLibs.pipeMaya import fix_frame_range, get_assets, get_valid_camera
+from miraLibs.pipeLibs.pipeMaya.lgt import transfer_attribute
 
 
 def main(file_name, local):
@@ -32,6 +33,9 @@ def main(file_name, local):
     # rebuild asset
     rebuild_asset(context)
     logger.info("Rebuild asset done.")
+    # transfer attribute
+    transfer_attribute.transfer_attribute()
+    logger.info("Transfer attribute done.")
     # reference camera
     reference_in_camera(context)
     # group assets
