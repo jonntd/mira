@@ -2,9 +2,9 @@
 import maya.cmds as mc
 
 
-attrs = ["rsEnableSubdivision", "rsSubdivisionRule", "rsScreenSpaceAdaptive", "rsDoSmoothSubdivision",
-             "rsMinTessellationLength", "rsMaxTessellationSubdivs", "rsOutOfFrustumTessellationFactor",
-             "rsEnableDisplacement", "rsMaxDisplacement", "rsDisplacementScale", "rsAutoBumpMap"]
+attrs = ["rsEnableSubdivision", "rsSubdivisionRule", "rsScreenSpaceAdaptive", "rsDoSmoothSubdivision",\
+         "rsMinTessellationLength", "rsMaxTessellationSubdivs", "rsOutOfFrustumTessellationFactor",
+         "rsEnableDisplacement", "rsMaxDisplacement", "rsDisplacementScale", "rsAutoBumpMap"]
 
 
 def transfer_attribute():

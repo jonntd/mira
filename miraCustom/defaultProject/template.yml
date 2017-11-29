@@ -49,6 +49,7 @@ maya_shot_description: "@primary/{project}/publish/shots/{sequence}/{shot}/{step
 maya_shot_cache:  "@primary/{project}/publish/shots/{sequence}/{shot}/{step}/{task}/_cache"
 maya_shot_assetInfo: "@primary/{project}/publish/shots/{sequence}/{shot}/{step}/{task}/_assetInfo/{engine}/{project}_{sequence}_{shot}_{step}_{task}.json"
 maya_shot_light: "@primary/{project}/publish/shots/{sequence}/{shot}/{step}/{task}/_light/{engine}/{project}_{sequence}_{shot}_{step}_{task}.ma"
+fx_cache_dir: "@vfx_cache_root_dir/{project}/cache/publish/{sequence}/{shot}/{step}"
 # --render
 maya_shot_render: "@render_root_dir/{project}/render/workarea/{sequence}/{shot}/{step}/_sequence"
 maya_shot_renderPublish: "@render_root_dir/{project}/render/publish/{sequence}/{shot}/{step}/_sequence"
