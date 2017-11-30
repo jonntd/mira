@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from Qt.QtWidgets import *
-from Qt.QtGui import *
 from Qt.QtCore import *
 from miraLibs.pipeLibs.pipeMaya.lgt import replace_env, import_cloth, import_hair_cache
+reload(import_hair_cache)
 
 
 class LgtInit(QDialog):
