@@ -1,5 +1,7 @@
 # -*- coding: utf-8 -*-
 import os
+import maya.cmds as mc
+import pymel.core as pm
 import xgenm as xgen
 import xgenm.xgGlobal as xgg
 from miraLibs.pipeLibs import pipeFile, Project
@@ -7,6 +9,7 @@ from miraLibs.pipeLibs import pipeFile, Project
 
 def main():
     import_xgen_cache()
+    import_geo_cache()
 
 
 def get_cache_dir():
@@ -26,8 +29,8 @@ def import_xgen_cache():
         descriptions = xgen.descriptions(palette)
         if not descriptions:
             continue
+        cache_dir = get_cache_dir()
         for description in descriptions:
-            cache_dir = get_cache_dir()
             cache_file_name = "%s/%s/hair/%s.abc" % (cache_dir, asset_name, description)
             if not os.path.isfile(cache_file_name):
                 continue
@@ -37,3 +40,25 @@ def import_xgen_cache():
 
     de = xgg.DescriptionEditor
     de.refresh("Full")
+
+
+def import_geo_cache():
+    sculps = [transform for transform in mc.ls(type="transform") if transform.endswith("_SCULP")]
+    if not sculps:
+        return
+    cache_dir = get_cache_dir()
+    for sculp in sculps:
+        asset_name = sculp.split("_")[1]
+        geos = mc.listRelatives(sculp, c=1, fullPath=1)
+        if not geos:
+            continue
+        for geo in geos:
+            geo_short_name = geo.split("|")[-1]
+            xml_path = "%s/%s/sculp/%s.xml" % (cache_dir, asset_name, geo_short_name)
+            xml_path = xml_path.replace("\\", "/")
+            data_path = "%s/%s/sculp/%s.mcx" % (cache_dir, asset_name, geo_short_name)
+            data_path = data_path.replace("\\", "/")
+            if not all((os.path.isfile(xml_path), os.path.isfile(data_path))):
+                continue
+            pm.mel.doImportCacheFile(xml_path, data_path, [geo], list())
+            print "Attach cache to %s done" % geo
