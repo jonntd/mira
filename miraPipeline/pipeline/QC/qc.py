@@ -150,7 +150,7 @@ class QC(QDialog):
         self.video_path = self.context.work_video_path
         self.next_version_file = self.context.next_version_file
         self.playblast_step = Project(self.project).playblast_step
-        self.has_playblast = self.step not in self.playblast_step
+        self.has_playblast = self.step in self.playblast_step
         self.setup_ui()
 
     def setup_ui(self):
