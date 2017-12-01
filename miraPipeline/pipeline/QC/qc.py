@@ -149,9 +149,8 @@ class QC(QDialog):
         self.other_dir = self.context.other_dir
         self.video_path = self.context.work_video_path
         self.next_version_file = self.context.next_version_file
-        self.not_playblast_step = Project(self.project).not_playblast_step
-        self.not_submit_version_step = Project(self.project).not_submit_version_step
-        self.has_playblast = self.step not in self.not_playblast_step
+        self.playblast_step = Project(self.project).playblast_step
+        self.has_playblast = self.step not in self.playblast_step
         self.setup_ui()
 
     def setup_ui(self):
@@ -243,7 +242,7 @@ class QC(QDialog):
         else:
             return None
 
-    def submit_version(self, thumbnail_path=None):
+    def submit_version(self):
         if self.has_playblast:
             from miraPipeline.maya.playblast import playblast_turntable, playblast_shot
             self.playblast_widget.start()
@@ -267,9 +266,7 @@ class QC(QDialog):
             elif len(version_files) == 1:
                 origin_file = version_files[0]
             else:
-                if self.step in self.not_submit_version_step:
-                    return
-                origin_file = thumbnail_path
+                return
             try:
                 ext = os.path.splitext(origin_file)[-1]
                 version_file = "%s%s" % (os.path.splitext(self.video_path)[0], ext)
@@ -314,9 +311,7 @@ class QC(QDialog):
             if not preflight_status:
                 return
         # playblast
-        version_file = self.submit_version(thumbnail_path)
-        if (self.step not in self.not_submit_version_step) and (not version_file):
-            return
+        version_file = self.submit_version()
         # copy image
         copy.copy(thumbnail_path, self.local_image_path)
         copy.copy(thumbnail_path, self.work_image_path)
