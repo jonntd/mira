@@ -1,6 +1,8 @@
 # -*- coding: utf-8 -*-
 import os
 import pymel.core as pm
+from miraLibs.mayaLibs import get_selected_group_sg
+from miraLibs.mayaLibs import get_shader_history_nodes
 
 
 def get_dst_path(src, mode="half"):
@@ -22,9 +24,16 @@ def get_nodes(type_):
     :param type_: str() - expecting a node type
     :return: list() of zero to N nodes of type_
     """
-
-    nodes = pm.ls(type=type_)
-    return nodes if nodes else []
+    sg_nodes = get_selected_group_sg.get_selected_group_sg()
+    if not sg_nodes:
+        return
+    all_history_nodes = list()
+    for sg_node in sg_nodes:
+        history_nodes = get_shader_history_nodes.get_shader_history_nodes(sg_node)
+        all_history_nodes.extend(history_nodes)
+    all_history_nodes = list(set(all_history_nodes))
+    nodes = [pm.PyNode(node) for node in all_history_nodes if pm.PyNode(node).type() == type_]
+    return nodes
 
 
 def switch_node_texture(type_, mode):
