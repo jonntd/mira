@@ -6,7 +6,8 @@ import maya.cmds as mc
 def get_selected_group_sg():
     sg_nodes = list()
     sel = mc.ls(sl=1)
-    meshes = mc.listRelatives(sel, ad=1, type="mesh")
+    meshes = mc.listRelatives(sel, ad=1, type="mesh", fullPath=1)
+    meshes = list(set(meshes))
     if not meshes:
         return
     for mesh in meshes:
