@@ -4,7 +4,7 @@ import logging
 import maya.cmds as mc
 from Qt.QtWidgets import *
 from miraLibs.pipeLibs import pipeFile
-from miraLibs.mayaLibs import export_abc, import_abc, save_as, Assembly
+from miraLibs.mayaLibs import export_abc, create_reference, save_as, Assembly
 
 
 logger = logging.getLogger(__name__)
@@ -34,7 +34,7 @@ def export_env_cache(cache_path):
 
 def import_env_cache(abc_path):
     if os.path.isfile(abc_path):
-        import_abc.import_abc(abc_path)
+        create_reference.create_reference(abc_path)
         logger.info("Import env cache done.")
     else:
         logger.warning("No env cache exists.")
