@@ -1,5 +1,4 @@
 load:
-  - mtoa.mll
   - MayaExocortexAlembic.mll
   - sceneAssembly.mll
   - AbcImport.mll
@@ -17,3 +16,4 @@ unload:
   - gameFbxExporter.mll
   - GamePipeline.mll
   - Turtle.mll
+  - mtoa.mll

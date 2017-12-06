@@ -14,7 +14,7 @@ def main():
 def reference_cloth():
     context = pipeFile.PathDetails.parse_path()
     project = context.project
-    template = Project(project).template("fx_cache_dir")
+    template = Project(project).template("fx_cache_publish")
     cache_dir = template.format(project=project, sequence=context.sequence, shot=context.shot, step="Cfx")
     if not os.path.isdir(cache_dir):
         print "No cloth cache dir exist"

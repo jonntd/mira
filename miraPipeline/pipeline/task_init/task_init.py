@@ -9,7 +9,7 @@ from ui import TaskUI
 from miraLibs.pipeLibs import pipeFile, Step, get_up_step_tasks
 from miraLibs.dccLibs import get_engine
 from miraLibs.pipeLibs.pipeDb import task_from_db_path
-from miraLibs.pyLibs import join_path, copy
+from miraLibs.pyLibs import join_path, copy, start_file
 
 
 class TaskInit(TaskUI):
@@ -24,6 +24,7 @@ class TaskInit(TaskUI):
     def set_signals(self):
         self.my_task_widget.task_view.pressed.connect(self.on_task_pressed)
         self.init_btn.clicked.connect(self.init_task)
+        self.launch_folder_btn.clicked.connect(self.launch_folder)
         self.work_stack.list_widget.copy_to_local_action.triggered.connect(self.copy_to_local)
 
     def on_task_pressed(self, index):
@@ -44,6 +45,19 @@ class TaskInit(TaskUI):
                 status = task_info.get("status").get("name")
                 status_color = task_info.get("status").get("color")
                 self.up_step_table.append_row(step, task, status, status_color)
+
+    def launch_folder(self):
+        if not self.selected:
+            return
+        local_file = pipeFile.get_task_work_file(self.selected.project, self.selected.entity_type,
+                                                 self.selected.asset_type_sequence, self.selected.asset_name_shot,
+                                                 self.selected.step, self.selected.task, "000", local=True)
+        if not local_file:
+            return
+        local_dir = os.path.dirname(local_file)
+        if not os.path.isdir(local_dir):
+            os.makedirs(local_dir)
+        start_file.start_file(local_dir)
 
     def init_task(self):
         work_file = pipeFile.get_task_work_file(self.selected.project, self.selected.entity_type,

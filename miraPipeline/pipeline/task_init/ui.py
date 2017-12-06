@@ -169,10 +169,13 @@ class TaskUI(QDialog):
 
         init_layout = QHBoxLayout()
         init_layout.setContentsMargins(0, 0, 0, 0)
+        btn_style = "QPushButton{color: #00b4ff; font-size: 10pt; font-weight: bold;}"" \
+        ""QPushButton:hover{color:#ff8c00}"
+        self.launch_folder_btn = QPushButton("Launch Folder")
         self.init_btn = QPushButton("+ Initialize Task")
-        self.init_btn.setStyleSheet("QPushButton{color: #00b4ff; font-size: 10pt; font-weight: bold;}"
-                                    "QPushButton:hover{color:#ff8c00}")
+        self.init_btn.setStyleSheet(btn_style)
         init_layout.addStretch()
+        init_layout.addWidget(self.launch_folder_btn)
         init_layout.addWidget(self.init_btn)
 
         self.file_widget = QTabWidget()
