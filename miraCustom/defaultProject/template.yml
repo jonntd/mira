@@ -49,7 +49,6 @@ maya_shot_description: "@primary/{project}/publish/shots/{sequence}/{shot}/{step
 maya_shot_cache:  "@primary/{project}/publish/shots/{sequence}/{shot}/{step}/{task}/_cache"
 maya_shot_assetInfo: "@primary/{project}/publish/shots/{sequence}/{shot}/{step}/{task}/_assetInfo/{engine}/{project}_{sequence}_{shot}_{step}_{task}.json"
 maya_shot_light: "@primary/{project}/publish/shots/{sequence}/{shot}/{step}/{task}/_light/{engine}/{project}_{sequence}_{shot}_{step}_{task}.ma"
-fx_cache_dir: "@vfx_cache_root_dir/{project}/cache/publish/{sequence}/{shot}/{step}"
 # --render
 maya_shot_render: "@render_root_dir/{project}/render/workarea/{sequence}/{shot}/{step}/_sequence"
 maya_shot_renderPublish: "@render_root_dir/{project}/render/publish/{sequence}/{shot}/{step}/_sequence"
@@ -67,8 +66,11 @@ nuke_shot_image: "@primary/{project}/publish/shots/{sequence}/{shot}/{step}/{tas
 nuke_shot_video:   "@primary/{project}/publish/shots/{sequence}/{shot}/{step}/{task}/_video/{engine}/{project}_{sequence}_{shot}_{step}_{task}.mov"
 nuke_shot_publish: "@primary/{project}/publish/shots/{sequence}/{shot}/{step}/{task}/_publish/{engine}/{project}_{sequence}_{shot}_{step}_{task}.nk"
 nuke_shot_renderPublish: "@render_root_dir/{project}/render/publish/{sequence}/{shot}/{step}/_sequence"
-# vfx render dir
-vfx_shot_render: "@render_root_dir/{project}/render/workarea/{sequence}/{shot}/{step}/v{version}"
-vfx_shot_renderPublish: "@render_root_dir/{project}/render/publish/{sequence}/{shot}/{step}"
+# fx cache dir
+fx_cache_work: "@vfx_cache_root_dir/{project}/cache/workarea/{sequence}/{shot}/{step}"
+fx_cache_publish: "@vfx_cache_root_dir/{project}/cache/publish/{sequence}/{shot}/{step}"
+# fx render dir
+fx_render_work: "@render_root_dir/{project}/render/workarea/{sequence}/{shot}/{step}"
+fx_render_publish: "@render_root_dir/{project}/render/publish/{sequence}/{shot}/{step}"
 # photoshop
 photoshop_asset_publish: "{primary}/{project}/workarea/assets/{asset_type}/{asset_name}/{step}/{task}/_publish/{engine}/{project}_{asset_name}_{step}_{task}_v{version}.psd"

@@ -15,6 +15,10 @@ Producer:
     name: "拷贝视频"
     command: "python {mira_dir}/miraScripts/paTools/copy_version_video/copy_version_video.py"
     order: 4
+  houqi_publish:
+    name: "特效&灯光素材入库"
+    command: "python {mira_dir}/miraScripts/paTools/fx_publish/fx_publish.py"
+    order: 5
 
 TD:
   task_start:
@@ -33,3 +37,7 @@ TD:
     name: "拷贝视频"
     command: "python {mira_dir}/miraScripts/paTools/copy_version_video/copy_version_video.py"
     order: 4
+  houqi_publish:
+    name: "特效&灯光素材入库"
+    command: "python {mira_dir}/miraScripts/paTools/fx_publish/fx_publish.py"
+    order: 5
