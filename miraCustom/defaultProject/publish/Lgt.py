@@ -6,7 +6,7 @@ from miraLibs.pipeLibs.pipeMaya import publish
 
 
 def main(file_name, local):
-    logger = logging.getLogger("Cfx publish")
+    logger = logging.getLogger("Lgt publish")
     if not local:
         open_file.open_file(file_name)
     # get paths
