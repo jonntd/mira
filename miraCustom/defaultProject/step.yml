@@ -96,7 +96,7 @@ Vfx:
 Lgt:
   entity_type: Shot
   engine: maya
-  up_step: ["Anim", "LgtLay"]
+  up_step: ["Anim", "LgtLay", "Cfx"]
   down_step: null
 Comp:
   entity_type: Shot
