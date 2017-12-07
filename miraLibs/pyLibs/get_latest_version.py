@@ -31,6 +31,7 @@ def get_latest_version(path, offset=0):
         pattern = re.sub('_v\d{%s}\.' % padding, '_v(\d{%s})\.' % padding, path)
         # get all published versions
         versions = list()
+        max_version = None
         if not os.listdir(current_task_dir):
             max_version = 1
         else:
@@ -43,6 +44,8 @@ def get_latest_version(path, offset=0):
                 versions.append(version_num)
             if versions:
                 max_version = max([int(version) for version in versions])+offset
+        if not max_version:
+            return
         max_version_str = '_v'+str(max_version).zfill(padding)+'.'
         publish_file_name = re.sub('_v\d{%s}\.' % padding, max_version_str, path)
         publish_file_name = os.path.abspath(publish_file_name)
