@@ -19,7 +19,6 @@ def export_geometry_cache(directory, file_name, start, end, points):
 
 
 def get_max_frame():
-    return 991
     end_frame = mc.playbackOptions(q=1, max=1)
     return int(end_frame)
 
