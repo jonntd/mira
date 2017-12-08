@@ -43,6 +43,16 @@ check_shot_frame_range:
   order: 70
   ignorable: True
   description: "检查帧范围是否正确"
+check_anim_namespace:
+  name: "namespace | 名称空间"
+  order: 75
+  ignorable: False
+  description: "检查namespace与资产是否相符，如果不符会影响到角色特效和灯光环节导出导入缓存。"
+check_anim_asset_group:
+  name: "Asset group | 资产分组"
+  order: 78
+  ignorable: False
+  description: "检查资产是否分组正确。"
 check_unknown_node:
   name: "Unknown nodes | 删除unknown节点"
   order: 80

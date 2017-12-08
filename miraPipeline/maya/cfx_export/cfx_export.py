@@ -112,15 +112,6 @@ def get_description():
     return descriptions
 
 
-class PushButton(QPushButton):
-    def __init__(self, text=None, parent=None):
-        super(PushButton, self).__init__(parent)
-        btn_style = "QPushButton{color: #00b4ff; font-size: 10pt; font-family: Arial Black;}"" \
-        ""QPushButton:hover{color:#ff8c00}"
-        self.setStyleSheet(btn_style)
-        self.setText(text)
-
-
 class CfxExport(QDialog):
     def __init__(self, parent=None):
         super(CfxExport, self).__init__(parent)
@@ -138,7 +129,7 @@ class CfxExport(QDialog):
 
         sculp_frame_layout = FrameLayout("Export Sculp", False)
         sculp_layout = QHBoxLayout(sculp_frame_layout.frame)
-        self.export_sculp_btn = PushButton("Export Sculp")
+        self.export_sculp_btn = QPushButton("Export Sculp")
         sculp_layout.addWidget(self.export_sculp_btn)
         main_layout.addLayout(sculp_frame_layout)
 
@@ -147,7 +138,7 @@ class CfxExport(QDialog):
         self.asset_name_list_widget = QListWidget()
         self.asset_name_list_widget.setSortingEnabled(True)
         self.asset_name_list_widget.setFocusPolicy(Qt.NoFocus)
-        self.export_cloth_btn = PushButton("Export Cloth")
+        self.export_cloth_btn = QPushButton("Export Cloth")
         cloth_layout.addWidget(self.asset_name_list_widget)
         cloth_layout.addWidget(self.export_cloth_btn)
         main_layout.addLayout(cloth_frame_layout)
@@ -157,7 +148,7 @@ class CfxExport(QDialog):
         self.description_list_widget = QListWidget()
         self.description_list_widget.setSortingEnabled(True)
         self.description_list_widget.setFocusPolicy(Qt.NoFocus)
-        self.export_hair_btn = PushButton("Export Hair")
+        self.export_hair_btn = QPushButton("Export Hair")
         hair_layout.addWidget(self.description_list_widget)
         hair_layout.addWidget(self.export_hair_btn)
         main_layout.addLayout(hair_frame_layout)
