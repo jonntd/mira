@@ -4,7 +4,7 @@ from Qt.QtCore import *
 from Qt.QtGui import *
 
 
-class FrameLayout(QGridLayout):
+class FrameLayout(QVBoxLayout):
     def __init__(self, button_text=None, collapse_status=None, parent=None):
         super(FrameLayout, self).__init__(parent)
         self.button_text = button_text
@@ -14,18 +14,16 @@ class FrameLayout(QGridLayout):
         self.setSpacing(0)
 
         self.tool_btn = QToolButton()
-        self.tool_btn.setFixedWidth(parent.width())
         self.tool_btn.setText(self.button_text)
         self.tool_btn.setIconSize(QSize(6, 6))
         self.tool_btn.setToolButtonStyle(Qt.ToolButtonTextBesideIcon)
-        self.tool_btn.setStyleSheet("QToolButton {background-color: #666666}")
+        self.tool_btn.setStyleSheet("QToolButton {background: transparent}")
 
         self.frame = QFrame()
-        self.frame.setFixedWidth(parent.width())
-        self.frame.setFrameStyle(QFrame.Panel | QFrame.Plain)
+        self.frame.setFrameStyle(QFrame.Panel | QFrame.Sunken)
 
-        self.addWidget(self.tool_btn, 0, 0)
-        self.addWidget(self.frame, 1, 0)
+        self.addWidget(self.tool_btn)
+        self.addWidget(self.frame)
         self.init_settings()
         self.set_signals()
 
