@@ -56,6 +56,7 @@ def export_sculp():
                 logging.error("More than one shape under %s" % t)
                 continue
             export_geometry_cache(cache_dir, no_namespace_name, 990, max_frame, needed_shapes[0])
+            logging.info("Export %s cache to %s" % (needed_shapes[0], cache_dir))
 
 
 def export_cloth(asset_name):
