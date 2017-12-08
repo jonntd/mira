@@ -32,7 +32,7 @@ def get_version():
 def get_cache_dir():
     context = pipeFile.PathDetails.parse_path()
     project = context.project
-    template = Project(project).template("fx_cache_publish")
+    template = Project(project).template("fx_cache_work")
     cache_dir = template.format(project=project, sequence=context.sequence, shot=context.shot, step="Cfx")
     return cache_dir
 
