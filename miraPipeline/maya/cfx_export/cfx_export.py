@@ -14,8 +14,8 @@ from miraLibs.pyLibs import start_file
 def export_geometry_cache(directory, file_name, start, end, points):
     if not os.path.isdir(directory):
         os.makedirs(directory)
-    mc.cacheFile(refresh=True, directory=directory, singleCache=0, format="OneFile", smr=1, spm=1, cacheFormat='mcc',
-                 fileName=file_name, st=start, et=end, points=points)
+    mc.cacheFile(refresh=True, directory=directory, singleCache=1, format="OneFile", smr=1, spm=1, cacheFormat='mcx',
+                 fileName=file_name, st=start, et=end, points=points, worldSpace=1)
 
 
 def get_max_frame():
