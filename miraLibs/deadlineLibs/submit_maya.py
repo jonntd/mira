@@ -6,8 +6,8 @@ import maya.mel as mel
 import DeadlineSubmission
 reload(DeadlineSubmission)
 from DeadlineSubmission import DeadlineSubmission
-from miraLibs.pyLibs import copy
 from miraLibs.pipeLibs import pipeFile
+from miraLibs.mayaLibs import get_render_images_dir
 
 
 def submit_maya():
@@ -19,16 +19,21 @@ def submit_maya():
     filein = "R:%s" % suffix
     mel.eval('setMayaSoftwareFrameExt(3,0);')
     pm.saveFile(f=1)
+    filein_dir = os.path.dirname(filein)
+    if not os.path.isdir(filein_dir):
+        os.makedirs(filein_dir)
     pm.saveAs(filein)
-    submit(output_file_path, filein)
+    submit(filein, output_file_path)
 
 
-def submit(output_file_path, filein=None):
+def submit(filein=None, output_file_path=None):
     # dets = pft.PathDetails.parse_path(pm.sceneName())
     # fileout = dets.getRenderFullPath().split('.####.')[0]
     # pm.setAttr('defaultRenderGlobals.imageFilePrefix', fileout)
     if not filein:
         filein = pm.sceneName()
+    if not output_file_path:
+        output_file_path = get_render_images_dir.get_render_images_dir()
     maya_dir = os.path.dirname(sys.executable)
     maya_exex = '%s\Render.exe' % maya_dir
     start_frame = int(pm.playbackOptions(animationStartTime=True, query=True))
