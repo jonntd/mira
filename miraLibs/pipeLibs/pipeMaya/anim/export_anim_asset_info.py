@@ -4,7 +4,7 @@ from miraLibs.mayaLibs import get_namespace
 from miraLibs.pipeLibs.pipeMaya import get_assets_under_type_group
 
 
-ASSET_DICT = {"char": "Character", "prop": "Prop", "cprop": "CProp"}
+ASSET_DICT = {"char": "Character", "prop": "Prop", "cprop": "Cprop", "build": "Building"}
 
 
 def export_anim_asset_info(path):

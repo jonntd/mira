@@ -2,11 +2,11 @@
 import maya.cmds as mc
 
 
-def get_all_parent_nodes(node, include_self=False):
+def get_all_parent_nodes(node, include_self=False, full_path=0):
     parent_nodes = list()
 
     def get_parent_node(node):
-        parent_node = mc.listRelatives(node, p=1)
+        parent_node = mc.listRelatives(node, p=1, fullPath=full_path)
         if not parent_node:
             return
         parent_nodes.extend(parent_node)

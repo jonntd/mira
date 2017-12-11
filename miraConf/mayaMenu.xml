@@ -85,6 +85,8 @@
                  mode="python" name="切换为全尺寸贴图" type="command"/>
         <command cmd="from miraPipeline.maya.lgt_initialize import lgt_initialize;reload(lgt_initialize);lgt_initialize.main()"
                  mode="python" name="灯光文件开始制作" type="command"/>
+        <command cmd="from miraPipeline.maya.lgt_fix_shader import lgt_fix_shader;reload(lgt_fix_shader);lgt_fix_shader.fix_shader()"
+                 mode="python" name="修复材质" type="command"/>
 
     </submenu>
     <submenu name= "----------" type="separator"/>
