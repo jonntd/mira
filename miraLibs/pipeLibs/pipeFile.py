@@ -77,7 +77,7 @@ class PathDetails(object):
         else:
             x.version = ""
         if x.entity_type == "Asset":
-            x.asset_type_short_name = type_dict[x.asset_type]
+            x.asset_type_short_name = type_dict.get(x.asset_type)
         return x
 
     def is_working_file(self):
