@@ -94,9 +94,9 @@ def init_user_setup():
     load_plugins()
     init_render_setting()
     init_scene_break_down()
-    add_system_python_path_env()
+    # add_system_python_path_env()
     # init_shotgun()
-    open_port()
+    # open_port()
     # remove_invalid_clipboard_data()
 
 

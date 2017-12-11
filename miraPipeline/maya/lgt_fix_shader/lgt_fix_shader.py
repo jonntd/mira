@@ -9,7 +9,9 @@ from Qt.QtCore import *
 
 def get_model_groups():
     model_groups = list()
-    for mesh in mc.ls(type="mesh"):
+    sel = mc.ls(sl=1, long=1)
+    shapes = mc.listRelatives(sel, fullPath=1)
+    for mesh in shapes:
         sg_nodes = mc.listConnections(mesh, s=0, d=1, type="shadingEngine")
         if sg_nodes:
             continue
@@ -27,7 +29,7 @@ def fix_shader():
         return
     progress_dialog = QProgressDialog('Correcting shader,Please wait......', 'Cancel', 0, len(model_groups))
     progress_dialog.setWindowModality(Qt.WindowModal)
-    progress_dialog.setMinimumWidth(300)
+    progress_dialog.setMinimumWidth(500)
     progress_dialog.show()
     for index, model_group in enumerate(model_groups):
         if progress_dialog.wasCanceled():
