@@ -34,9 +34,8 @@ def fix_shader():
             break
         asset_name = model_group.split("|")[-1].split("_")[1]
         for ref_file in mc.file(q=1, r=1):
-            ref_file = ref_file.replace("CProp", "Cprop")
             try:
-                context = pipeFile.PathDetails.parse_path(ref_file)
+                context = pipeFile.PathDetails.parse_path(ref_file.replace("CProp", "Cprop"))
                 if context.asset_name == asset_name and context.area == "_shd":
                     mc.file(ref_file, rr=1)
                     assign_shader.assign_shader(model_group)
