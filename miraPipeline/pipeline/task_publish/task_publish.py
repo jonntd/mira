@@ -8,9 +8,8 @@ from miraFramework.task_common_form import CommonForm
 from miraFramework.message_box import MessageWidget
 from miraLibs.pyLibs import Path, join_path
 from miraLibs.pipeLibs import pipeFile, get_up_step_tasks
-from miraLibs.deadlineLibs import submit
+from miraLibs.deadlineLibs import submit_python
 from miraLibs.qtLibs import render_ui
-import getpass
 
 
 class TableWidget(QTableWidget):
@@ -176,9 +175,9 @@ class TaskPublish(QDialog):
         change_status = self.task_status_check.isChecked()
         # work_file, change_task
         argv = "%s %s" % (self.work_file, change_status)
-        submitter = getpass.getuser()
-        tar_name = 'pipemanager'
-        submit.submit_python_job(deadline_job_name, publish_script_path, argv, tar_name, submitter)
+        white_list = 'pipemanager'
+        # py_path, args, white_list, job_name
+        submit_python.submit_python(publish_script_path, argv, white_list, deadline_job_name)
         mw = MessageWidget("Success", "%s submit done." % task_name, self)
         mw.show()
 
