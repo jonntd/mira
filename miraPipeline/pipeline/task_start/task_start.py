@@ -1,6 +1,5 @@
 # -*- coding: utf-8 -*-
 import os
-import getpass
 from Qt.QtWidgets import *
 from Qt.QtCore import *
 from Qt.QtGui import *
@@ -8,7 +7,7 @@ from miraLibs.pipeLibs.get_task_name import get_task_name
 from miraFramework.task_common_form import CommonForm
 from miraLibs.pyLibs import Path, join_path
 from miraLibs.pipeLibs import pipeFile, Step
-from miraLibs.deadlineLibs import submit
+from miraLibs.deadlineLibs import submit_python
 from miraLibs.qtLibs import render_ui
 
 
@@ -110,9 +109,8 @@ class TaskStart(QDialog):
         deadline_job_name = "start_%s" % task_name
         # work_file, change_task
         argv = self.work_file
-        submitter = getpass.getuser()
-        tar_name = 'pipemanager'
-        submit.submit_python_job(deadline_job_name, start_script_path, argv, tar_name, submitter)
+        white_list = 'pipemanager'
+        submit_python.submit_python(start_script_path, argv, white_list, deadline_job_name)
         QMessageBox.information(self, "Warming Tip", "%s submit done." % task_name)
 
 

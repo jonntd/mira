@@ -69,6 +69,12 @@ class DeadlineSubmission(object):
     def setUserName(self, name):
         self.details["UserName"] = name
 
+    def setWhiteList(self, white_list):
+        self.details["Whitelist"] = white_list
+
+    def setUserName(self, user_name):
+        self.details["UserName"] = user_name
+
     def submit(self):
         with Temporary() as tempdir:
             job_info, plugin_info = self.settingjobPlugininfo(tempdir)

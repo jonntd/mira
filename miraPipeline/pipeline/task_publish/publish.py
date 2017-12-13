@@ -6,7 +6,7 @@ from miraLibs.pipeLibs.get_task_name import get_task_name
 import pipeGlobal
 from miraLibs.pyLibs import join_path
 from miraLibs.pipeLibs import Project, pipeFile, get_logger
-from miraLibs.dbLibs import toolkit, db_api
+from miraLibs.dbLibs import db_api
 from miraLibs.pipeLibs.pipeDb import task_from_db_path
 
 
