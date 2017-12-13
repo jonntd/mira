@@ -11,10 +11,9 @@ def submit_python(py_path, args, white_list, job_name):
 
 
 def submit(python_version, py_path, args, white_list, job_name):
-    python_args = "%s %s" % (py_path, args)
     sub = DeadlineSubmission()
     sub.setPlugin("Python")
-    sub.setArgs(python_args)
+    sub.setArgs(args)
     sub.setVersion(python_version)
     sub.setScriptFile(py_path)
     sub.setWhiteList(white_list)
