@@ -13,8 +13,7 @@ class DeadlineSubmission(object):
     def __init__(self):
         object.__init__(self)
         self.jobid = None
-
-        self.executable = pipeGlobal.exe.get("python").get("py27").get("pythonbin")
+        self.executable = ""
         self.arguments = '-c "import time; time.sleep(10)"'
         self.cwd = pipeGlobal.exe.get("python").get("py27").get('pythonstartupdir')
 
