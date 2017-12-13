@@ -102,13 +102,18 @@ class DeadlineSubmission(object):
         # return self.jobid
 
     def settingjobPlugininfo(self, tempdir):
-        jobSubmission = {
-            'Arguments': self.arguments,
-            'Executable': self.executable,
-            'StartupDirectory': self.cwd,
-            'Version': self.version,
-            'ScriptFile': self.script_file
-        }
+        if self.details["Plugin"] == "Python":
+            jobSubmission = {
+                'Arguments': self.arguments,
+                'Version': self.version,
+                'ScriptFile': self.script_file
+            }
+        else:
+            jobSubmission = {
+                'Arguments': self.arguments,
+                'Executable': self.executable,
+                'StartupDirectory': self.cwd,
+            }
         job_info = os.path.join(tempdir, "jobinfo.job").replace("\\", "/")
         DeadlineSubmission.write_keys(self.details, job_info)
         plugin_info = os.path.join(tempdir, "info.publin").replace("\\", "/")
