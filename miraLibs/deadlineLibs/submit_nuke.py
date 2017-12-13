@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-from getpass import getuser
 import pipeGlobal
 import DeadlineSubmission
 reload(DeadlineSubmission)
@@ -31,7 +30,7 @@ def submit_nuke():
 def submit(nuke_exe, filein, render_py, job_name):
     nuke_args = '-t %s %s' % (render_py, filein)
     sub = DeadlineSubmission()
-    sub.setUserName(getuser())
+    sub.setPlugin("CommandLine")
     sub.setExe(nuke_exe)
     sub.setArgs(nuke_args)
     sub.setName(job_name)
