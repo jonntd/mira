@@ -1,7 +1,6 @@
 # -*- coding: utf-8 -*-
 import os
 import sys
-from getpass import getuser
 import DeadlineSubmission
 reload(DeadlineSubmission)
 from DeadlineSubmission import DeadlineSubmission
@@ -40,7 +39,7 @@ def submit(maya_exe, filein, output_file_path, start, end, job_name):
     # comment = ''
     maya_args = '-s <STARTFRAME>  -e <ENDFRAME>  -rd %s %s ' % (output_file_path, filein)
     sub = DeadlineSubmission()
-    sub.setUserName(getuser())
+    sub.setPlugin("CommandLine")
     sub.setExe(maya_exe)
     sub.setArgs(maya_args)
     sub.setName(job_name)

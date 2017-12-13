@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+from getpass import getuser
 import subprocess
 import time
 import os
@@ -17,7 +18,7 @@ class DeadlineSubmission(object):
         self.arguments = '-c "import time; time.sleep(10)"'
         self.cwd = pipeGlobal.exe.get("python").get("py27").get('pythonstartupdir')
 
-        self.details = {"Plugin": "CommandLine",
+        self.details = {"Plugin": "",
                         "Name": "",
                         "Comment": '',
                         "Department": 'Automated',
@@ -36,7 +37,7 @@ class DeadlineSubmission(object):
                         "Frames": "0",
                         "ChunkSize": "1",
                         "ExtraInfo0": "",
-                        "UserName": ""
+                        "UserName": getuser()
                         }
         pool = pipeGlobal.exe.get("deadline").get("default_pool")
         if pool:
@@ -51,11 +52,20 @@ class DeadlineSubmission(object):
     def setArgs(self, args):
         self.arguments = args
 
+    def setVersion(self, version):
+        self.version = version
+
+    def setScriptFile(self, script_file):
+        self.script_file = script_file
+
     def setName(self, name):
         self.details['Name'] = name
 
     def setPool(self, pool):
         self.details['Pool'] = pool
+
+    def setPlugin(self, plugin):
+        self.details["Plugin"] = plugin
 
     def setFrames(self, frames):
         self.details['Frames'] = str(frames)
@@ -71,9 +81,6 @@ class DeadlineSubmission(object):
 
     def setWhiteList(self, white_list):
         self.details["Whitelist"] = white_list
-
-    def setUserName(self, user_name):
-        self.details["UserName"] = user_name
 
     def submit(self):
         with Temporary() as tempdir:
@@ -99,7 +106,9 @@ class DeadlineSubmission(object):
         jobSubmission = {
             'Arguments': self.arguments,
             'Executable': self.executable,
-            'StartupDirectory': self.cwd
+            'StartupDirectory': self.cwd,
+            'Version': self.version,
+            'ScriptFile': self.script_file
         }
         job_info = os.path.join(tempdir, "jobinfo.job").replace("\\", "/")
         DeadlineSubmission.write_keys(self.details, job_info)
@@ -133,4 +142,3 @@ class DeadlineSubmission(object):
             match = progress_match.match(x)
             if match:
                 return int(match.groupdict()["progress"])
-
