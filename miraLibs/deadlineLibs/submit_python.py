@@ -1,6 +1,4 @@
 # -*- coding: utf-8 -*-
-from getpass import getuser
-import pipeGlobal
 import DeadlineSubmission
 reload(DeadlineSubmission)
 from DeadlineSubmission import DeadlineSubmission

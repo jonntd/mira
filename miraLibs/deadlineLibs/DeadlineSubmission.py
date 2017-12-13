@@ -33,7 +33,7 @@ class DeadlineSubmission(object):
                         "LimitGroups": '',
                         "JobDependencies": "",
                         "OnJobComplete": "Nothing",
-                        "Frames": "0",
+                        "Frames": "1",
                         "ChunkSize": "1",
                         "ExtraInfo0": "",
                         "UserName": getuser()
