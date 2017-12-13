@@ -253,7 +253,8 @@ class FxPublish(QDialog):
                 QMessageBox.critical(self, "Error", "Copy to publish failed.")
             else:
                 if self.change_status_check.isChecked():
-                    current_task = self.db.get_current_task("Shot", self.sequence, self.shot, self.step, self.step)
+                    shot_name = "%s_%s" % (self.sequence, self.shot)
+                    current_task = self.db.get_current_task("Shot", self.sequence, shot_name, self.step, self.step)
                     if current_task:
                         self.db.update_task_status(current_task, "Delivered")
                 self.progress_bar.setValue(10)
