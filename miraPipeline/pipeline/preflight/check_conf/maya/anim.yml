@@ -13,6 +13,11 @@ check_unloaded_reference:
   order: 20
   ignorable: True
   description: "检查是否有没加载的reference"
+check_anim_ref_is_rig:
+  name: "reference not rig | reference中有非Rig文件"
+  order: 22
+  ignorable: True
+  description: "检查reference中是否有不是绑定环节的文件，如果有低模环节的文件，动画导出cache，无法attach材质。"
 check_lay_set_node_exist:
   name: set node exist | set节点存在
   order: 25

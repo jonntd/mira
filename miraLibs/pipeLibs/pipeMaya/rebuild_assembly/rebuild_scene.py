@@ -35,8 +35,9 @@ def edit(conf_data=None):
     for e in edits:
         try:
             mel.eval(e)
+            print e
         except:
-            print "Error: %s" % e
+            print "Rebuild scene error: %s" % e
     print "Edit done."
 
 

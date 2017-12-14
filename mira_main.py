@@ -31,11 +31,19 @@ def run_mel_cmd(mel_path):
     mel.eval("source \"%s\"" % mel_path)
 
 
+def reload_menu():
+    import pymel.core as pm
+    menus = pm.lsUI(menus=1)
+    for each_menu in menus:
+        if each_menu.getLabel() == "L2-Studio":
+            try:
+                mc.deleteUI(each_menu.name())
+            except:pass
+            break
+    load_menu()
+
+
 def load_menu():
-    try:
-        mc.delteUI("[MIRA]")
-    except:
-        pass
     menu_conf_path = get_menu_conf_path()
     dom_tree = xml.dom.minidom.parse(menu_conf_path)
     collection = dom_tree.documentElement

@@ -29,7 +29,7 @@ def reference_cloth():
 
 def group_cloth():
     top_ = mc.ls(assemblies=1)
-    clothes = [i for i in top_ if i.startswith("cloth")]
+    clothes = [i for i in top_ if i.startswith("cloth:")]
     if clothes:
         create_group.create_group("Cloth")
         for cloth in clothes:
