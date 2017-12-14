@@ -15,3 +15,5 @@ pipeline_shelf:
     order: 60
   qcpublish:
     order: 70
+  reload_menu:
+    order: 80

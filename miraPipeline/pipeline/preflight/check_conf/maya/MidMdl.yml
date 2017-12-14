@@ -78,6 +78,11 @@ check_mdl_extra_shape:
   order: 140
   ignorable: False
   description: "检查一个transform下是否有多个shape"
+check_mdl_unvisible:
+  name: "Unvisible things | 隐藏的模型"
+  order: 142
+  ignorable: True
+  description: "检查是否有隐藏的模型存在。"
 check_mdl_suffix:
   name: "_GEOSHAPE | shape={transform}_GEOSAHPE"
   order: 145
