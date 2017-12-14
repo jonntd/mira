@@ -28,5 +28,6 @@ class Check(BaseCheck):
 
     def get_assets(self, asset_type):
         transforms = mc.listRelatives(asset_type, ad=1, type="transform")
-        assets = [transform for transform in transforms if transform.endswith("_ROOT")]
-        return assets
+        if transforms:
+            assets = [transform for transform in transforms if transform.endswith("_ROOT")]
+            return assets
