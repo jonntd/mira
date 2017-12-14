@@ -69,6 +69,8 @@
                  mode="python" name="lightingTool(arnold)" type="command"/>
         <command cmd="from miraLibs.pipeLibs.pipeMaya.lgt import match_anim_move;reload(match_anim_move);match_anim_move.main()"
                  mode="python" name="匹配动画场景移动数据【Match Anim Env】" type="command"/>
+        <command cmd="from miraLibs.pipeLibs.pipeMaya.lgt import only_export_anim_env;reload(only_export_anim_env);only_export_anim_env.main()"
+                 mode="python" name="仅导出动画场景缓存【Only Export Anim Env】" type="command"/>
         <command cmd="import miraScripts.mayaTools.lighting_tool.foreground_render.ForegroundRender as fr; reload(fr); fr.main()"
                  mode="python" name="窗口渲染【foreground render】" type="command"/>
         <command cmd="from miraLibs.pipeLibs.pipeMaya.lgt import render_dir;reload(render_dir);render_dir.set_render_dir()"
