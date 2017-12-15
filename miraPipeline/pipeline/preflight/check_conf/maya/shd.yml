@@ -8,16 +8,16 @@ check_display_smooth:
   order: 5
   ignorable: False
   description: "所有模型按1显示"
-#check_reference_is_newest:
-#  name: "neweset reference | 最新的reference"
+#check_shd_transfer_uv:
+#  name: "uv transfer | 传递UV"
 #  order: 8
-#  ignorable: True
-#  description: "检查文件中的reference文件是不是最新的"
-check_shd_transfer_uv:
-  name: "uv transfer | 传递UV"
+#  ignorable: False
+#  description: "检查是否有传递UV，如果有传递UV，不能直接在有reference的状态下删除中间物体。"
+check_shd_import_reference:
+  name: "import reference | 导入reference"
   order: 8
   ignorable: False
-  description: "检查是否有传递UV，如果有传递UV，不能直接在有reference的状态下删除中间物体。"
+  description: "导入reference"
 check_topology:
   name: "topology | 拓扑结构"
   order: 10
@@ -98,16 +98,21 @@ check_mdl_vertex_zero:
   order: 120
   ignorable: False
   description: "检查模型的点是否归零"
+check_mdl_delete_history:
+  name: "Delete History | 删除历史"
+  order: 130
+  ignorable: False
+  description: "删除大组下所有模型的历史"
 check_unused_nodes:
   name: "Unused nodes | 删除无用节点"
   order: 150
   ignorable: False
   description: "删除无用节点"
-#check_mdl_intermediate:
-#  name: "Intermediate Objects | 中间物体"
-#  order: 155
-#  ignorable: False
-#  description: "中间物体，变形或者传递UV产生的多余的shape."
+check_mdl_intermediate:
+  name: "Intermediate Objects | 中间物体"
+  order: 155
+  ignorable: False
+  description: "中间物体，变形或者传递UV产生的多余的shape."
 check_mdl_extra_shape:
   name: "Extra shape | 多余的shape"
   order: 160
