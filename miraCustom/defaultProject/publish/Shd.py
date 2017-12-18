@@ -1,4 +1,5 @@
 # -*- coding: utf-8 -*-
+import os
 import logging
 import maya.cmds as mc
 from miraLibs.pipeLibs import pipeFile
@@ -6,6 +7,7 @@ from miraLibs.mayaLibs import open_file, quit_maya, export_selected, \
     delete_history, delete_unused_nodes, delete_layer, unlock_normal, \
     get_selected_group_sg, get_shader_history_nodes, remove_namespace, delete_intermediate_object
 from miraLibs.pipeLibs.pipeMaya import rename_pipeline_shape, publish, get_model_name
+from miraLibs.pyLibs.image import resize_image
 
 
 def get_created_sg_node():
@@ -43,6 +45,26 @@ def unlock_normals():
     meshes = mc.ls(type="mesh")
     mc.select(meshes, r=1)
     unlock_normal.unlock_normal()
+
+
+def convert_image(context):
+    tex_dir = context.tex_dir
+    if not os.path.isdir(tex_dir):
+        return
+    ext_list = [".tif", ".tiff", ".png", ".tga", ".jpg", ".jpeg", ".exr", ".psd", ".bmp"]
+    for i in os.listdir(tex_dir):
+        tex_name = "%s/%s" % (tex_dir, i)
+        if not os.path.isfile(tex_name):
+            continue
+        ext = os.path.splitext(tex_name)[-1]
+        if ext not in ext_list:
+            continue
+        prefix, suffix = os.path.split(tex_name)
+        half_tex_name = "%s/half/%s" % (prefix, suffix)
+        half_tex_dir = os.path.dirname(half_tex_name)
+        if not os.path.isdir(half_tex_dir):
+            os.makedirs(half_tex_dir)
+        resize_image(tex_name, half_tex_name)
 
 
 def main(file_name, local):
@@ -87,6 +109,9 @@ def main(file_name, local):
     # export connection
     publish.export_connection(context)
     logger.info("Export connection done.")
+    # convert image
+    convert_image(context)
+    logger.info("Convert image done.")
     # add to AD
     publish.add_mesh_to_ad(context)
     logger.info("Add to AD done.")
