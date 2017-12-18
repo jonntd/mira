@@ -25,6 +25,8 @@ class HierarchyOpt(object):
             vertex_num = mc.polyEvaluate(transform, v=1)
             edge_num = mc.polyEvaluate(transform, e=1)
             face_num = mc.polyEvaluate(transform, f=1)
+            # world_bounding = mc.exactWorldBoundingBox(transform)
+            # topology_dict[transform] = dict(vertex=vertex_num, edge=edge_num, face=face_num, ws=world_bounding)
             topology_dict[transform] = dict(vertex=vertex_num, edge=edge_num, face=face_num)
         return topology_dict
 
@@ -63,6 +65,8 @@ class HierarchyOpt(object):
             temp_dict[new_name] = new_dict[key]
         if old_dict == temp_dict:
             return []
+        print old_dict
+        print new_dict
         for key in temp_dict:
             if old_dict[key] != temp_dict[key]:
                 changed_list.append(key)
