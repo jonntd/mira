@@ -18,6 +18,7 @@ class Check(BaseCheck):
 
     def get_child_transform(self, parent_object):
         children_transform = pm.listRelatives(parent_object, allDescendents=1, type="transform")
+        children_transform.append(parent_object)
         return children_transform
 
     def get_unlock_attributes(self):
